@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rimraf dist .jest_cache coverage",
     "build": "pnpm clean && mkdir dist && tsc",
-    "lint": "eslint . --cache --fix --no-error-on-unmatched-pattern",
+    "lint": "eslint . --fix",
+    "lint:debug": "eslint . --debug",
     "test": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" && jest --runInBand --colors",
     "format": "prettier -w -l .",
     "prepare": "husky install",
