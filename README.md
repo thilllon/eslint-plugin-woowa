@@ -1,8 +1,4 @@
-![commit](https://badgen.net/github/last-commit/darraghoriordan/eslint-plugin-nestjs-typed/main)
-![npm](https://img.shields.io/npm/v/@darraghor/eslint-plugin-nestjs-typed.svg?color=red)
-![npm-tag](https://badgen.net/github/tag/darraghoriordan/eslint-plugin-nestjs-typed)
-![size](https://badgen.net/bundlephobia/minzip/@darraghor/eslint-plugin-nestjs-typed?color=cyan)
-![types](https://badgen.net/npm/types/@darraghor/eslint-plugin-nestjs-typed?color=blue)
+# eslint-plugin-woowa
 
 ## A note on versions
 
@@ -27,23 +23,23 @@ Nest Modules and Dependency Injection
 
 Nest Swagger
 
-- api-property-matches-property-optionality
-- controllers-should-supply-api-tags
-- api-method-should-specify-api-response
-- api-enum-property-best-practices
-- api-property-returning-array-should-set-array
+- nestjs-api-property-matches-property-optionality
+- nestjs-controllers-should-supply-api-tags
+- nestjs-api-method-should-specify-api-response
+- nestjs-api-enum-property-best-practices
+- nestjs-api-property-returning-array-should-set-array
 
 Preventing bugs
 
-- param-decorator-name-matches-route-param
-- validate-nested-of-array-should-set-each
-- validated-non-primitive-property-needs-type-decorator
-- all-properties-are-whitelisted
-- all-properties-have-explicit-defined
+- nestjs-param-decorator-name-matches-route-param
+- nestjs-validate-nested-of-array-should-set-each
+- nestjs-validated-non-primitive-property-needs-type-decorator
+- nestjs-all-properties-are-whitelisted
+- nestjs-all-properties-have-explicit-defined
 
 Security
 
-- should-specify-forbid-unknown-values
+- nestjs-should-specify-forbid-unknown-values
 
 ## Why use this package?
 
@@ -82,7 +78,7 @@ https://github.com/typestack/class-validator/issues/438
 ## To install
 
 ```
-npm install --save-dev @darraghor/eslint-plugin-nestjs-typed
+npm install --save-dev eslint-plugin-woowa
 ```
 
 If you don't already have `class-validator` you should install that
@@ -126,14 +122,14 @@ Disable a single rule with the full name e.g. in your eslint configuration...
 {
   "rules": {
     // ...
-    "woowa/api-property-returning-array-should-set-array": "off"
+    "woowa/nestjs-api-property-returning-array-should-set-array": "off"
   }
 }
 ```
 
 ## Rule Details
 
-### Rule: all-properties-have-explicit-defined
+### Rule: nestjs-all-properties-have-explicit-defined
 
 This rule checks that all properties of a class have an appropriate `@IsDefined()` or `@IsOptional()` decorator.
 
@@ -174,7 +170,7 @@ export class CreateOrganisationDto {
 }
 ```
 
-### Rule: all-properties-are-whitelisted
+### Rule: nestjs-all-properties-are-whitelisted
 
 You should forbid non-whitelisted properties in your DTOs.
 
@@ -213,7 +209,7 @@ export class CreateOrganisationDto {
 }
 ```
 
-### Rule: validate-nested-of-array-should-set-each
+### Rule: nestjs-validate-nested-of-array-should-set-each
 
 If you use the `@ValidateNested` decorator you should specify the `{each: true}` option if the property is an array.
 
@@ -257,7 +253,7 @@ export class CreateOrganisationDto {
 }
 ```
 
-### Rule: validated-non-primitive-property-needs-type-decorator
+### Rule: nestjs-validated-non-primitive-property-needs-type-decorator
 
 If you use any of the class validator decorators on a property that is not a primitive, you should tell class-transformer how to transform it into a class first.
 
@@ -346,7 +342,7 @@ export class CreateOrganisationDto {
 }
 ```
 
-### Rule: param-decorator-name-matches-route-param
+### Rule: nestjs-param-decorator-name-matches-route-param
 
 This rule will verify you have entered a `Param("name")` that has a matching url parameter in a controller or method decorator
 
@@ -412,7 +408,7 @@ export class CustomBotController {
 }
 ```
 
-### Rule: should-specify-forbid-unknown-values
+### Rule: nestjs-should-specify-forbid-unknown-values
 
 This checks when if you are setting ValidationPipe parameters you set forbidUnknownValues to true.
 
@@ -451,7 +447,7 @@ this PASSES because the default values seem to work ok
 const validationPipeB = new ValidationPipe();
 ```
 
-### Rule: provided-injected-should-match-factory-parameters
+### Rule: nestjs-provided-injected-should-match-factory-parameters
 
 Checks that there are the same number of injected items in a Provider that are passed to the factory method
 
@@ -496,7 +492,7 @@ export const MyOtherInjectableProvider: Provider = {
 };
 ```
 
-### Rule: injectable-should-be-provided
+### Rule: nestjs-injectable-should-be-provided
 
 Checks that a class marked with `@Injectable` is injected somewhere in a module or used in a provider.
 
@@ -540,7 +536,7 @@ There is some additional configuration you can (and should!) provide for this ru
         ],
 ```
 
-### Rule: api-property-matches-property-optionality
+### Rule: nestjs-api-property-matches-property-optionality
 
 This checks that you have added the correct api property decorator for your swagger documents.
 
@@ -578,7 +574,7 @@ class TestClass {
 }
 ```
 
-### Rule: controllers-should-supply-api-tags
+### Rule: nestjs-controllers-should-supply-api-tags
 
 If you have more than a handful of api methods the swagger UI is difficult to navigate. It's easier to group api methods by using tags.
 
@@ -599,7 +595,7 @@ The following FAILS because it's missing api tags
 class TestClass {}
 ```
 
-### Rule: api-method-should-specify-api-response
+### Rule: nestjs-api-method-should-specify-api-response
 
 If you have an api method like @Get() you should specify the return status code (and type!) by using @ApiResponse and the other expected responses.
 
@@ -629,7 +625,7 @@ class TestClass {
 }
 ```
 
-### Rule: api-enum-property-best-practices
+### Rule: nestjs-api-enum-property-best-practices
 
 If you use enums on properties you should set the correct open api properties in the ApiProperty decorator.
 
@@ -677,7 +673,7 @@ class MyClass {
 }
 ```
 
-### Rule: api-property-returning-array-should-set-array
+### Rule: nestjs-api-property-returning-array-should-set-array
 
 If you return an array you should indicate this in the api property. There are two ways to do this
 
