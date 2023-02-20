@@ -11,7 +11,8 @@
     "test": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" && jest --runInBand --colors",
     "format": "prettier -w -l .",
     "prepare": "husky install",
-    "release": "semantic-release"
+    "release": "release-it",
+    "release:tmp": "semantic-release"
   },
   "release": {
     "branches": [
@@ -24,7 +25,7 @@
     "url": "https://github.com/thilllon/eslint-plugin-woowa"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "files": [
     "dist"
@@ -79,6 +80,7 @@
     "jest-junit": "^15.0.0",
     "lint-staged": "^13.1.2",
     "prettier": "^2.8.4",
+    "release-it": "^15.6.0",
     "rimraf": "^4.1.2",
     "semantic-release": "^20.1.0",
     "ts-jest": "^29.0.5",
