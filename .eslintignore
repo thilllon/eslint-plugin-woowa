@@ -6,4 +6,4 @@ changelog.config.*
 
 coverage
 dist
-example
+example/**
