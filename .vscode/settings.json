@@ -1,0 +1,7 @@
+{
+  "xo.enable": true,
+  "xo.format.enable": true,
+  "cSpell.words": ["TSES", "injectables"],
+  "typescript.preferences.importModuleSpecifierEnding": "auto",
+  "typescript.updateImportsOnFileMove.enabled": "always"
+}

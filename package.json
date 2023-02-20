@@ -1,0 +1,86 @@
+{
+  "name": "eslint-plugin-woowa",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Eslint rules for woowa projects",
+  "scripts": {
+    "clean": "rimraf dist .jest_cache coverage",
+    "build": "pnpm clean && mkdir dist && tsc",
+    "lint": "eslint . --cache --fix --no-error-on-unmatched-pattern",
+    "test": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192\" && jest --runInBand --colors",
+    "format": "prettier -w -l .",
+    "prepare": "husky install",
+    "release": "semantic-release"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "homepage": "https://github.com/thilllon/eslint-plugin-woowa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thilllon/eslint-plugin-woowa"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": {
+    "name": "thilllon",
+    "email": "thilllon970@gmail.com"
+  },
+  "main": "dist/index.js",
+  "types": "index.d.ts",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "nestjs",
+    "nextjs",
+    "linter",
+    "lint",
+    "style"
+  ],
+  "dependencies": {
+    "@typescript-eslint/scope-manager": "^5.52.0",
+    "@typescript-eslint/utils": "^5.52.0",
+    "eslint-module-utils": "^2.7.4",
+    "reflect-metadata": "^0.1.13",
+    "tsutils": "^3.21.0"
+  },
+  "devDependencies": {
+    "@babel/types": "^7.20.7",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@jest/types": "^29.4.3",
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/exec": "^6.0.3",
+    "@types/eslint": "^8.21.1",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "class-validator": "^0.14.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsdoc": "^40.0.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-unicorn": "^45.0.2",
+    "husky": "^8.0.3",
+    "jest": "^29.4.3",
+    "jest-create-mock-instance": "^2.0.0",
+    "jest-junit": "^15.0.0",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "rimraf": "^4.1.2",
+    "semantic-release": "^20.1.0",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}

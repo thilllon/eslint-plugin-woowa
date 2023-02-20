@@ -1,0 +1,8 @@
+node_modules
+.eslintrc.*
+jest.config.*
+commitlint.config.*
+changelog.config.*
+
+coverage
+dist
