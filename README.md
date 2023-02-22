@@ -1,12 +1,58 @@
 # eslint-plugin-woowa
 
+## Usage
+
+```sh
+npm install --save-dev eslint-plugin-woowa
+```
+
+If you don't already have `class-validator` you should install that
+
+```sh
+npm install class-validator
+```
+
+Then update your eslint with the plugin import and add the recommended rule set
+
+```ts
+module.exports = {
+  env: {
+    es6: true,
+  },
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: ['./tsconfig.json'],
+    sourceType: 'module',
+    ecmaVersion: 'es2019',
+  },
+  plugins: ['woowa'], // short version of ['eslint-plugin-woowa']
+  extends: ['plugin:woowa/recommended'], // to use the recommended configuration of `eslint-plugin-woowa`
+};
+```
+
+Note: the injectables test scans your whole project. It's best to filter out ts things that don't matter - use `filterFromPaths` configuration setting for this. There are some defaults already applied. See details below.
+
+Note: You can easily turn off all the swagger rules if you don't use swagger by adding the `no-swagger` rule set AFTER the recommended rule set.
+
+```jsonc
+{
+  // all the other config...
+  "extends": ["plugin:woowa/recommended", "plugin:woowa/no-swagger"]
+}
+```
+
+Disable a single rule with the full name e.g. in your eslint configuration...
+
+```jsonc
+{
+  "rules": {
+    // ...
+    "woowa/nestjs-api-property-returning-array-should-set-array": "off"
+  }
+}
+```
+
 ## A note on versions
-
-Version 2.x supports Eslint version <=7.x and typescript eslint parser 4
-
-Version 3.x supports Eslint version >=8.x and typescript eslint parser 5+
-
-There were many breaking changes between these versions.
 
 typescript eslint parser supports a range of typescript versions but there can be a delay in supporting the latest versions.
 
@@ -14,32 +60,30 @@ This plugin only supports typescript up to the version typescript eslint parser 
 
 ## Index of available rules
 
-(more details for each specific rule are available in sections below)
+- Nest Modules and Dependency Injection
 
-Nest Modules and Dependency Injection
+  - nestjs-provided-injected-should-match-factory-parameters
+  - nestjs-injectable-should-be-provided
 
-- provided-injected-should-match-factory-parameters
-- injectable-should-be-provided
+- Nest Swagger
 
-Nest Swagger
+  - nestjs-api-property-matches-property-optionality
+  - nestjs-controllers-should-supply-api-tags
+  - nestjs-api-method-should-specify-api-response
+  - nestjs-api-enum-property-best-practices
+  - nestjs-api-property-returning-array-should-set-array
 
-- nestjs-api-property-matches-property-optionality
-- nestjs-controllers-should-supply-api-tags
-- nestjs-api-method-should-specify-api-response
-- nestjs-api-enum-property-best-practices
-- nestjs-api-property-returning-array-should-set-array
+- Preventing bugs
 
-Preventing bugs
+  - nestjs-param-decorator-name-matches-route-param
+  - nestjs-validate-nested-of-array-should-set-each
+  - nestjs-validated-non-primitive-property-needs-type-decorator
+  - nestjs-all-properties-are-whitelisted
+  - nestjs-all-properties-have-explicit-defined
 
-- nestjs-param-decorator-name-matches-route-param
-- nestjs-validate-nested-of-array-should-set-each
-- nestjs-validated-non-primitive-property-needs-type-decorator
-- nestjs-all-properties-are-whitelisted
-- nestjs-all-properties-have-explicit-defined
+- Security
 
-Security
-
-- nestjs-should-specify-forbid-unknown-values
+  - nestjs-should-specify-forbid-unknown-values
 
 ## Why use this package?
 
@@ -74,58 +118,6 @@ There are some tightly coupled but untyped decorators and things like that in ne
 There is a CVE for class-transformer when using random javascript objects. You need to be careful about configuring the ValidationPipe in NestJs. See
 https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-18413
 https://github.com/typestack/class-validator/issues/438
-
-## To install
-
-```
-npm install --save-dev eslint-plugin-woowa
-```
-
-If you don't already have `class-validator` you should install that
-
-```
-npm install class-validator
-```
-
-Then update your eslint with the plugin import and add the recommended rule set
-
-```ts
-module.exports = {
-  env: {
-    es6: true,
-  },
-  extends: ['plugin:woowa/recommended'],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: ['./tsconfig.json'],
-    sourceType: 'module',
-    ecmaVersion: 'es2019',
-  },
-  plugins: ['woowa'],
-};
-```
-
-Note: the injectables test scans your whole project. It's best to filter out ts things that don't matter - use `filterFromPaths` configuration setting for this. There are some defaults already applied. See details below.
-
-Note: You can easily turn off all the swagger rules if you don't use swagger by adding the `no-swagger` rule set AFTER the recommended rule set.
-
-```jsonc
-{
-  // all the other config...
-  "extends": ["plugin:woowa/recommended", "plugin:woowa/no-swagger"]
-}
-```
-
-Disable a single rule with the full name e.g. in your eslint configuration...
-
-```jsonc
-{
-  "rules": {
-    // ...
-    "woowa/nestjs-api-property-returning-array-should-set-array": "off"
-  }
-}
-```
 
 ## Rule Details
 
